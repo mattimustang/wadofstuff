@@ -35,10 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <service_bundle type='manifest' name='buildbot'>
 
-<service
-	name='site/application/buildbot'
-	type='service'
-	version='1'>
+<service name='site/application/buildbot' type='service' version='2'>
 
 	<dependency name='filesystem_local'
 		grouping='require_all'
@@ -56,6 +53,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <method_context>
         <method_credential user='buildbot' group='buildbot' />
+        <method_environment>
+            <envvar name='PATH' value='/usr/bin:/usr/sbin:/usr/ccs/bin:/usr/local/bin:/usr/local/sbin:/usr/sfw/bin' />
+        </method_environment>
     </method_context>
 
 	<exec_method
