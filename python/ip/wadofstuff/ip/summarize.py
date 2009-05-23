@@ -1,5 +1,5 @@
 #!/usr/local/bin/python
-# Copyright (c) 2007, Matthew Flanagan
+# Copyright (c) 2007-2009, Matthew Flanagan
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -33,6 +33,8 @@ Reduce a range of IP Addresses, e.g. 192.168.1.0 to 192.168.1.50, to
 a group of networks. e.g. 192.168.1.0/27, 192.168.1.32/28, 192.168.1.48/31,
 192.168.1.50.
 """
+__version__ = '1.0.0'
+
 from IPy import IP, _ipVersionToLen
 import sys
 
