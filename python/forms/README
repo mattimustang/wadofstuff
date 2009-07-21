@@ -1,0 +1,51 @@
+Wad of Stuff Django Forms
+=========================
+
+A set of utility functions and classes to extend the functionality of Django
+forms.
+
+Requirements
+============
+
+Django 1.0 or newer.
+
+Functions
+=========
+
+security_hash(request, form, exclude=None, *args)
+-------------------------------------------------
+
+Calculates a security hash for the given Form/FormSet instance.
+
+This creates a list of the form field names/values in a deterministic
+order, pickles the result with the SECRET_KEY setting, then takes an md5
+hash of that.
+
+Allows a list of form fields to be excluded from the hash calculation. This
+is useful form fields that may have their values set programmatically.
+
+Classes
+=======
+
+BoundFormWizard
+---------------
+
+A subclass of Django's FormWizard that adds the following functionality:
+
+- Renders `previous_fields` as a list of bound form fields in the template
+  context rather than as raw html.
+- Can handle FormSets.
+
+The usage of this class is identical to that documented at
+http://docs.djangoproject.com/en/dev/ref/contrib/formtools/form-wizard/ with
+the exception that when rendering `previous_fields` you should change your
+wizard step templates from:
+
+    <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+    {{ previous_fields|safe }}
+
+to:
+
+    <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+    {% for f in previous_fields %}{{ f.as_hidden }}{% endfor %}
+
