@@ -1,0 +1,47 @@
+Wad of Stuff Django Views
+=========================
+
+A set of view functions and classes to extend the functionality of Django's
+generic views to support inlines.
+
+Requirements
+============
+
+Django 1.0 or newer.
+
+Functions
+=========
+
+create_object(..., inlines=None) and update_object(..., inlines=None)
+---------------------------------------------------------------------
+
+These functions are identical to the Django ones except for the addition of the
+`inlines` argument. This argument consists of a list of dictionaries that will
+be passed as arguments after the `parent_model` argument to
+`inlineformset_factory(parent_model, ...)`.
+
+For example, arguments to a generic view might typically look like:
+
+crud_dict = {
+    'model':Author
+    'inlines':[{
+        'model':Book,
+        'extra':2,
+        'form':BookForm,
+    },{
+        'model':Article,
+    }],
+    # ... other generic view arguments
+}
+
+would translate to calls to `inlineformset_factory()` like:
+
+   inlineformset_factory(Author, model=Book, extra=2, form=BookForm)
+
+and
+
+   inlineformset_factory(Author, model=Article)
+
+The view function will create a formset for each inline model and add them to
+the template context. In the example above the context variables would be named
+`book_formset` and `article_formset`.
