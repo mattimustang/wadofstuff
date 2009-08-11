@@ -12,10 +12,8 @@ Django 1.0 or newer.
 Functions
 =========
 
-wadofstuff.django.views.create_object(..., inlines=None)
---------------------------------------------------------
-wadofstuff.django.views.update_object(..., inlines=None)
---------------------------------------------------------
+create_object(..., inlines=None) and update_object(..., inlines=None)
+---------------------------------------------------------------------
 
 These functions are identical to the Django ones except for the addition of the
 `inlines` argument. This argument consists of a list of dictionaries that will
