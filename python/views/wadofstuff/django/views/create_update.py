@@ -9,6 +9,8 @@ from django.utils.translation import ugettext
 from django.views.generic.create_update import get_model_and_form_class, \
     lookup_object, redirect, apply_extra_context
 
+__all__ = ('create_object', 'update_object')
+
 def create_object(request, model=None, template_name=None,
         template_loader=loader, extra_context=None, post_save_redirect=None,
         login_required=False, context_processors=None, form_class=None,
