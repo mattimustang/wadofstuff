@@ -11,6 +11,8 @@ from django.forms.forms import BoundField
 from django.forms.formsets import BaseFormSet
 from django.utils.hashcompat import md5_constructor
 
+__all__ = ('security_hash', 'BoundFormWizard')
+
 def security_hash(request, form, exclude=None, *args):
     """Calculates a security hash for the given Form/FormSet instance.
 

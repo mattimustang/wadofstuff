@@ -1,3 +1,8 @@
+Version 1.1.0:
+
+- Added RequireOneFormSet inline formset class.
+- Modified to allow classes and functions to be imported from wadofstuff.django.forms.
+
 Version 1.0.0:
 
 - First public release.

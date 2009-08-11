@@ -12,8 +12,8 @@ Django 1.0 or newer.
 Functions
 =========
 
-security_hash(request, form, exclude=None, *args)
--------------------------------------------------
+wadofstuff.django.forms.security_hash(request, form, exclude=None, *args)
+-------------------------------------------------------------------------
 
 Calculates a security hash for the given Form/FormSet instance.
 
@@ -27,8 +27,8 @@ is useful form fields that may have their values set programmatically.
 Classes
 =======
 
-BoundFormWizard
----------------
+wadofstuff.django.forms.BoundFormWizard
+---------------------------------------
 
 A subclass of Django's FormWizard that adds the following functionality:
 
@@ -49,3 +49,15 @@ to:
     <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
     {% for f in previous_fields %}{{ f.as_hidden }}{% endfor %}
 
+wadofstuff.django.forms.RequireOneFormSet
+-----------------------------------------
+
+A subclass of Django's BaseInlineFormSet that requires at least one form in
+the formset to be completed.
+
+Use this class as the `formset` argument to `inlineformset_factory`.
+
+When the formset is validated and it does not contain one or more entries, then
+a `ValidationError` is raised which gets put into `formset.non_form_errors`. You
+will need to check this in your templates if you wish to display the error
+message to your users.
