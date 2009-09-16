@@ -8,6 +8,7 @@ class RequireOneFormSet(BaseInlineFormSet):
     """Require at least one form in the formset to be completed."""
     def clean(self):
         """Check that at least one form has been completed."""
+        super(RequireOneFormSet, self).clean()
         for error in self.errors:
             if error:
                 return
